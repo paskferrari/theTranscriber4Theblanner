@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: doc-processor
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --workers=2 --threads=4 --timeout=120"
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    # Se vuoi disco persistente, scommenta queste 4 righe e vedi sezione sotto
+    # disk:
+    #   name: data
+    #   mountPath: /data
+    #   sizeGB: 1
