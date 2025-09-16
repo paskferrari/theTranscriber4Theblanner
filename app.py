@@ -12,6 +12,10 @@ import re
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+CORS(app, resources={r"/*": {"origins": [
+  "https://<tuo-sito>.netlify.app",
+  "https://<tuo-dominio>.it"
+]}})
 import PyPDF2
 import docx
 from pathlib import Path
